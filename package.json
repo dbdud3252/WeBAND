@@ -1,0 +1,31 @@
+{
+  "name": "weband",
+  "version": "1.0.0",
+  "description": "creative computing project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbdud3252/WeBAND.git"
+  },
+  "keywords": [
+    "creative_computing",
+    "weband",
+    "p5.js",
+    "node",
+    "sockets"
+  ],
+  "author": "YOUYOUNG LEE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dbdud3252/WeBAND/issues"
+  },
+  "homepage": "https://github.com/dbdud3252/WeBAND#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
