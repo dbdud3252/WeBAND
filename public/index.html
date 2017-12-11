@@ -4,14 +4,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
-    <script src="sketch.js"></script>
+    
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#show").click(function(){
+            $("#sketch1").show();
+        });
+        $("#hide").click(function(){
+            $("#sketch1").hide();
+        });
+    });
+    </script>
+
+    
 
     <style>
     html, body {margin:0; padding:0; overflow:hidden;} </style>
     </head> 
     
     <body> 
+        <button id="show">show</button>
+        <button id="hide">hide</button>
+        <div id="sketch1">
+            <script src="sketch.js"></script>
+        </div>
+        
 
     </body>
 </html>
