@@ -5,11 +5,8 @@
 // Keep track of our socket connection
 var socket;
 
-
-
-
 function setup() {
-  createCanvas(400, 400).parent('sketch1');
+  createCanvas(400, 400).parent('sketch');
   
   background(0);
   // Start a socket connection to the server
@@ -56,6 +53,7 @@ function sendmouse(xpos, ypos) {
   // Send that object to the socket
   socket.emit('mouse',data);
 }
+
 
  
 // save this file as sketch.js
