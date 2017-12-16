@@ -1,14 +1,30 @@
 var socket;
 var tone_data=['A','S','D','F','G','H','J','K','L',';'];
+var note_data=['C4','D4','E4','F4','G4','A4','B4','C5','D5','E5']
+var sharp_note_data=['C#4','D#4','F#4','G#4','A#4','C#5','D#5']
 var sharp_data=['W','E','T','Y','U','O','P'];
 var keys_down = new Array(tone_data.length)
 var sharp_keys_down = new Array(sharp_data.length)
 var i=0;
 
+var synth = new Tone.Synth({
+    "oscillator" : {
+        "type" : "square"
+    },
+    "envelope" : {
+        "attack" : 0.01,
+        "decay" : 0.2,
+        "sustain" : 0.2,
+        "release" : 0.2,
+    }
+}).toMaster();
+
 function setup(){
     createCanvas(800,240).parent('sketch');
     socket = io.connect('http://localhost:3000');
 }
+
+
 
 function draw(){
   draw_all_piano();
@@ -20,10 +36,12 @@ function draw_all_piano(){
     if (keys_down[j]==true){
       fill(96);
       rect(j*80,0,80,240);
+      
     }
     else{
       fill(255);
       rect(j*80,0,80,240);
+      
     }
   }
   
@@ -75,6 +93,7 @@ function draw_all_piano(){
       fill(255);
       textAlign(CENTER);
       text(sharp_data[j], 80+j*80, 150);
+      
     }
     else if (j>2 && j<6){
       fill(255);
@@ -92,20 +111,24 @@ function keyPressed(){
   console.log("key is pressed");
   console.log(keys_down);
   console.log(key);
+  
 }
 
 function keyReleased(){
     Keys(false);
+    synth.triggerRelease();
 }
 
 
 function Keys(state){
   for( var i = 0; i < tone_data.length; i++){
-    if( tone_data[i] == key ){ keys_down[i] = state; }
+    if( tone_data[i] == key ){ keys_down[i] = state; 
+        synth.triggerAttack(note_data[i]);}
   }
   for( var i = 0; i < sharp_data.length; i++){
-    if( sharp_data[i] == key ){ sharp_keys_down[i] = state; }
+    if( sharp_data[i] == key ){ sharp_keys_down[i] = state; 
+        synth.triggerAttack(sharp_note_data[i]);}
+    }
   }
-}
 
 
