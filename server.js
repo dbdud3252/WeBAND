@@ -29,11 +29,27 @@ var io = require('socket.io')(server);
 // This is run for each individual user that connects
 io.sockets.on('connection',
   // We are given a websocket object in our function
+
   function (socket) {
   
     console.log("We have a new client: " + socket.id);
   
     // When this user emits, client side: socket.emit('otherevent',some data);
+
+    socket.on('sound',
+      function(note) {
+        // Data comes in as whatever was sent, including objects
+        console.log("Received: 'sound' " + note);
+      
+        // Send it to all other clients
+        socket.broadcast.emit('sound', note);
+        
+        // This is a way to send to everyone including sender
+        // io.sockets.emit('message', "this goes to everyone");
+
+      }
+    );
+
     socket.on('mouse',
       function(data) {
         // Data comes in as whatever was sent, including objects
@@ -47,6 +63,7 @@ io.sockets.on('connection',
 
       }
     );
+
     
     socket.on('disconnect', function() {
       console.log("Client has disconnected");
