@@ -1,59 +1,42 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-    <head>
-    
-    <meta charset="UTF-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
-    
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <script src="Tone.js"></script>
-	<script src="scripts/jquery.min.js"></script>
-	<script src="scripts/draggabilly.js"></script>
-	<script src="scripts/StartAudioContext.js"></script>
-	<script src="scripts/Interface.js"></script>
-	<script src="https://tonejs.github.io/Logo/build/Logo.js"></script>
-    <script src="scripts/Keyboard.js"></script>
-    
-    <script src="drum.js"></script>
-    <script src="piano.js"></script>
+<head>
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style/examples.css">
 
-    
     <script type="text/javascript">
-    $(document).ready(function(){
-        $("#one").click(function(){
-            $("#keyboard").show();
-            $("#drum").hide();
+        $(document).ready(function () {
+            $("#one").click(function () {
+                $("#keyboard").show();
+                $("#drum").hide();
+            });
+            $("#two").click(function () {
+                $("#drum").show();
+                $("#keyboard").hide();
+            });
         });
-        $("#two").click(function(){
-            $("#drum").show();
-            $("#keyboard").hide();
-        });
-    });
     </script>
-    
-    
-       
-
-    
 
     <style>
-    html, body {margin:0; padding:0; overflow:hidden;} </style>
-    </head> 
-    
-    <body> 
-        <button id="one">one</button>
-        <button id="two">two</button>
-        <div id="keyboard">
-        </div>
-        <div id="drum">
-        </div>
-    </body>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="one">one</button>
+    <button id="two">two</button>
+    <div id="keyboard">
+        <iframe src="piano.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw;"></iframe>
+    </div>
+    <div id="drum">
+        <iframe src="drum.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw;"></iframe>
+    </div>
+</body>
+
 </html>

@@ -26,7 +26,7 @@ function preload() {
 }
 
 function setup(){
-    createCanvas(1000, 600).parent('drum');
+    createCanvas(1000, 600);
     socket = io.connect('http://localhost:3000');
     socket.on('drum',
     // When we receive data
@@ -39,7 +39,7 @@ function setup(){
       else if(key=="I"){s_ride.play();}
       else if(key=="D"){s_snare.play();}
       else if(key=="F"){s_tom1.play();}
-      else if(key=="G"){s_tom2.play();} 
+      else if(key=="G"){s_tom2.play();}
       else if(key=="H"){s_tom3.play();}
     }
   );
@@ -135,7 +135,7 @@ function draw_drum(){
         image(ride, 650, 70, width/4, width/4);
     }
 
-    
+
 }
 
 function keyPressed(){
@@ -144,11 +144,11 @@ function keyPressed(){
 }
 
 
-  
+
 function Keys(state){
     for( var i = 0; i <9; i++){
-      if( key_set[i] == key){ 
-          keys_down[i] = state;           
+      if( key_set[i] == key){
+          keys_down[i] = state;
           if(key=="S"){s_closehh.play(); sendsound(key);}
           else if(key=="A"){s_openhh.play(); sendsound(key);}
           else if(key=="W"){s_crash.play(); sendsound(key);}
@@ -156,14 +156,14 @@ function Keys(state){
           else if(key=="I"){s_ride.play(); sendsound(key);}
           else if(key=="D"){s_snare.play(); sendsound(key);}
           else if(key=="F"){s_tom1.play(); sendsound(key);}
-          else if(key=="G"){s_tom2.play(); sendsound(key);} 
+          else if(key=="G"){s_tom2.play(); sendsound(key);}
           else if(key=="H"){s_tom3.play(); sendsound(key);}
-          
+
         console.log("play");
         console.log(state);
-        
+
         console.log(keys_down);
-          
+
       }
     }
 

@@ -20,7 +20,7 @@ var synth = new Tone.Synth({
 }).toMaster();
 
 function setup(){
-    createCanvas(800,240).parent('keyboard');
+    createCanvas(800,240);
     socket = io.connect('http://localhost:3000');
     socket.on('sound',
     // When we receive data
@@ -43,20 +43,20 @@ function draw(){
 }
 
 function draw_all_piano(){
-  
+
   for(var j=0;j<10;j++) {
     if (keys_down[j]==true){
       fill(96);
       rect(j*80,0,80,240);
-      
+
     }
     else{
       fill(255);
       rect(j*80,0,80,240);
-      
+
     }
   }
-  
+
   for(var j=0;j<9;j++) {
     if(j==2 || j==6) continue;
     if (j<2){
@@ -89,15 +89,15 @@ function draw_all_piano(){
         rect(56+j*80,0,48,160);
       }
     }
-    
-    
+
+
   }
   textSize(32);
   for(var j=0; j<10; j++) {
     fill(0);
     textAlign(CENTER);
     if(tone_data[j]==186){
-        text(";", 40+j*80, 230);   
+        text(";", 40+j*80, 230);
     }
     else{
         text(tone_data[j], 40+j*80, 230);
@@ -110,7 +110,7 @@ function draw_all_piano(){
       fill(255);
       textAlign(CENTER);
       text(sharp_data[j], 80+j*80, 150);
-      
+
     }
     else if (j>2 && j<6){
       fill(255);
@@ -128,7 +128,7 @@ function keyPressed(){
   console.log("key is pressed");
   console.log(key);
   console.log(keyCode);
-  
+
 }
 
 function keyReleased(){
@@ -140,21 +140,21 @@ function keyReleased(){
 
 function Keys(state){
   for( var i = 0; i < tone_data.length; i++){
-    if( tone_data[i] == key ||  tone_data[i]== keyCode ){ keys_down[i] = state; 
+    if( tone_data[i] == key ||  tone_data[i]== keyCode ){ keys_down[i] = state;
         synth.triggerAttack(note_data[i]);
         var note= note_data[i];
         sendsound(note);
     }
-        
-        
+
+
   }
   for( var i = 0; i < sharp_data.length; i++){
-    if( sharp_data[i] == key ){ sharp_keys_down[i] = state; 
+    if( sharp_data[i] == key ){ sharp_keys_down[i] = state;
         synth.triggerAttack(sharp_note_data[i]);
         var note= sharp_note_data[i];
         sendsound(note);
         }
-        
+
     }
 }
 
@@ -175,7 +175,7 @@ function sendsound(note) {
     var data = {
         x: note
       };
-    
+
       // Send that object to the socket
       socket.emit('sound',data);
   }
