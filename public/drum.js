@@ -26,8 +26,23 @@ function preload() {
 }
 
 function setup(){
-    createCanvas(1000, 600).parent('sketch');
+    createCanvas(1000, 600).parent('drum');
     socket = io.connect('http://localhost:3000');
+    socket.on('drum',
+    // When we receive data
+    function(key) {
+      console.log("Got: " + key);
+      if(key=="S"){s_closehh.play();}
+      else if(key=="A"){s_openhh.play();}
+      else if(key=="W"){s_crash.play();}
+      else if(key=="J"){s_kick.play();}
+      else if(key=="I"){s_ride.play();}
+      else if(key=="D"){s_snare.play();}
+      else if(key=="F"){s_tom1.play();}
+      else if(key=="G"){s_tom2.play();} 
+      else if(key=="H"){s_tom3.play();}
+    }
+  );
     background(0);
 }
 
@@ -134,15 +149,15 @@ function Keys(state){
     for( var i = 0; i <9; i++){
       if( key_set[i] == key){ 
           keys_down[i] = state;           
-          if(key=="S"){s_closehh.play();}
-          else if(key=="A"){s_openhh.play();}
-          else if(key=="W"){s_crash.play();}
-          else if(key=="J"){s_kick.play();}
-          else if(key=="I"){s_ride.play();}
-          else if(key=="D"){s_snare.play();}
-          else if(key=="F"){s_tom1.play();}
-          else if(key=="G"){s_tom2.play();}
-          else if(key=="H"){s_tom3.play();}
+          if(key=="S"){s_closehh.play(); sendsound(key);}
+          else if(key=="A"){s_openhh.play(); sendsound(key);}
+          else if(key=="W"){s_crash.play(); sendsound(key);}
+          else if(key=="J"){s_kick.play(); sendsound(key);}
+          else if(key=="I"){s_ride.play(); sendsound(key);}
+          else if(key=="D"){s_snare.play(); sendsound(key);}
+          else if(key=="F"){s_tom1.play(); sendsound(key);}
+          else if(key=="G"){s_tom2.play(); sendsound(key);} 
+          else if(key=="H"){s_tom3.play(); sendsound(key);}
           
         console.log("play");
         console.log(state);
@@ -153,3 +168,12 @@ function Keys(state){
     }
 
   }
+
+
+function sendsound(key) {
+    // We are sending!
+    console.log("sendsound: " + key);
+
+    // Send that object to the socket
+    socket.emit('drum',key);
+}

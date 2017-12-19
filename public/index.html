@@ -17,28 +17,26 @@
 	<script src="scripts/StartAudioContext.js"></script>
 	<script src="scripts/Interface.js"></script>
 	<script src="https://tonejs.github.io/Logo/build/Logo.js"></script>
-	<script src="scripts/Keyboard.js"></script>
+    <script src="scripts/Keyboard.js"></script>
+    
+    <script src="drum.js"></script>
+    <script src="piano.js"></script>
+
     
     <link rel="stylesheet" type="text/css" href="style/examples.css">
 
-    <script src="drum.js"></script>
+    
     <script type="text/javascript">
     $(document).ready(function(){
-           /*
-            $('#one').click(function(){
-                var script=document.createElement('script');
-                script.src='sketch.js';
-                $('head').append(script);
-            }
-            )
-            $('#two').click(function(){
-                var script=document.createElement('script');
-                script.src='piano.js';
-                $('head').append(script);
-            }
-            )
-            */
+        $("#one").click(function(){
+            $("#keyboard").show();
+            $("#drum").hide();
         });
+        $("#two").click(function(){
+            $("#drum").show();
+            $("#keyboard").hide();
+        });
+    });
     </script>
     
     
@@ -53,7 +51,9 @@
     <body> 
         <button id="one">one</button>
         <button id="two">two</button>
-        <div id="sketch">
+        <div id="keyboard">
+        </div>
+        <div id="drum">
         </div>
     </body>
 </html>

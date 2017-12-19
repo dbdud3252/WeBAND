@@ -20,7 +20,7 @@ var synth = new Tone.Synth({
 }).toMaster();
 
 function setup(){
-    createCanvas(800,240).parent('sketch');
+    createCanvas(800,240).parent('keyboard');
     socket = io.connect('http://localhost:3000');
     socket.on('sound',
     // When we receive data
