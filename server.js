@@ -64,6 +64,20 @@ io.sockets.on('connection',
       }
     );
 
+    socket.on('guitar',
+    function(sound) {
+      // Data comes in as whatever was sent, including objects
+      console.log("Received: 'guitar sound' " + sound);
+    
+      // Send it to all other clients
+      socket.broadcast.emit('guitar', sound);
+      
+      // This is a way to send to everyone including sender
+      // io.sockets.emit('message', "this goes to everyone");
+
+      }
+    );
+
     socket.on('mouse',
       function(data) {
         // Data comes in as whatever was sent, including objects

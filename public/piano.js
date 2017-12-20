@@ -8,6 +8,7 @@ var sharp_keys_down = new Array(sharp_data.length)
 var i=0;
 
 var s_closehh, s_openhh, s_crash, s_kick, s_ride, s_snare, s_tom1, s_tom2, s_tom3;
+var c_1, c_2, c_3, c_4, c_5, c_6, f_1,f_2,f_3,f_4,f_5,f_6,g_1,g_2,g_3,g_4,g_5,g_6;
 function preload() {
   soundFormats('ogg', 'wav');
   s_closehh = loadSound("drum/closehh.wav");
@@ -19,6 +20,27 @@ function preload() {
   s_tom1 = loadSound("drum/tom1.wav");
   s_tom2 = loadSound("drum/tom2.wav");
   s_tom3 = loadSound("drum/tom3.wav");
+  c_img = loadImage("guitar/c_img.png")
+  f_img = loadImage("guitar/f_img.png")
+  g_img = loadImage("guitar/g_img.png")
+  c_1 = loadSound("guitar/c/1.mp3");
+  c_2 = loadSound("guitar/c/2.mp3");
+  c_3 = loadSound("guitar/c/3.mp3");
+  c_4 = loadSound("guitar/c/4.mp3");
+  c_5 = loadSound("guitar/c/5.mp3");
+  c_6 = loadSound("guitar/c/6.mp3");
+  f_1 = loadSound("guitar/f/1.mp3");
+  f_2 = loadSound("guitar/f/2.mp3");
+  f_3 = loadSound("guitar/f/3.mp3");
+  f_4 = loadSound("guitar/f/4.mp3");
+  f_5 = loadSound("guitar/f/5.mp3");
+  f_6 = loadSound("guitar/f/6.mp3");
+  g_1 = loadSound("guitar/g/1.mp3");
+  g_2 = loadSound("guitar/g/2.mp3");
+  g_3 = loadSound("guitar/g/3.mp3");
+  g_4 = loadSound("guitar/g/4.mp3");
+  g_5 = loadSound("guitar/g/5.mp3");
+  g_6 = loadSound("guitar/g/6.mp3");
 }
 
 var synth = new Tone.Synth({
@@ -65,6 +87,31 @@ function setup(){
       else if(key=="H"){s_tom3.play();}
     }
   );
+
+  socket.on('guitar',
+  // When we receive data
+  function(sound) {
+    console.log("Got: " + sound);
+    if(sound=="c1"){c_1.play();}
+    else if(sound=="c2"){c_2.play();}
+    else if(sound=="c3"){c_3.play();}
+    else if(sound=="c4"){c_4.play();}
+    else if(sound=="c5"){c_5.play();}
+    else if(sound=="c6"){c_6.play();}
+    else if(sound=="f1"){f_1.play();}
+    else if(sound=="f2"){f_2.play();}
+    else if(sound=="f3"){f_3.play();}
+    else if(sound=="f4"){f_4.play();}
+    else if(sound=="f5"){f_5.play();}
+    else if(sound=="f6"){f_6.play();}
+    else if(sound=="g1"){g_1.play();}
+    else if(sound=="g2"){g_2.play();}
+    else if(sound=="g3"){g_3.play();}
+    else if(sound=="g4"){g_4.play();}
+    else if(sound=="g5"){g_5.play();}
+    else if(sound=="g6"){g_6.play();}
+  }
+);
 }
 
 

@@ -2,9 +2,22 @@ var socket;
 var guitar_img;
 var c_img, f_img, g_img;
 var c_1, c_2, c_3, c_4, c_5, c_6, f_1,f_2,f_3,f_4,f_5,f_6,g_1,g_2,g_3,g_4,g_5,g_6;
+var s_closehh, s_openhh, s_crash, s_kick, s_ride, s_snare, s_tom1, s_tom2, s_tom3;
 var mode;
+var keys_down = [false,false,false,false,false,false,false,false,false];
+var key_set=["J","D","F","H","G","A","S","W","I"];
 
 function preload() {
+    soundFormats('ogg', 'wav');
+    s_closehh = loadSound("drum/closehh.wav");
+    s_openhh = loadSound("drum/openhh.wav");
+    s_crash = loadSound("drum/crash.wav");
+    s_kick = loadSound("drum/kick.wav");
+    s_ride = loadSound("drum/ride.wav");
+    s_snare = loadSound("drum/snare.wav");
+    s_tom1 = loadSound("drum/tom1.wav");
+    s_tom2 = loadSound("drum/tom2.wav");
+    s_tom3 = loadSound("drum/tom3.wav");
     guitar_img = loadImage("guitar/guitar_image.png");
     c_img = loadImage("guitar/c_img.png")
     f_img = loadImage("guitar/f_img.png")
@@ -56,9 +69,24 @@ function setup(){
       else if(sound=="g4"){g_4.play();}
       else if(sound=="g5"){g_5.play();}
       else if(sound=="g6"){g_6.play();}
-
     }
   );
+
+    socket.on('drum',
+    // When we receive data
+    function(key) {
+        console.log("Got: " + key);
+        if(key=="S"){s_closehh.play();}
+        else if(key=="A"){s_openhh.play();}
+        else if(key=="W"){s_crash.play();}
+        else if(key=="J"){s_kick.play();}
+        else if(key=="I"){s_ride.play();}
+        else if(key=="D"){s_snare.play();}
+        else if(key=="F"){s_tom1.play();}
+        else if(key=="G"){s_tom2.play();}
+        else if(key=="H"){s_tom3.play();}
+    }
+    );
 }
 
 
@@ -146,22 +174,22 @@ function c_set(){
 
 function c_play(){
     if (mouseY==265){
-        c_1.play();
+        c_1.play(); sendsound("c1");
     }
     if (mouseY==273){
-        c_2.play();
+        c_2.play(); sendsound("c2");
     }
     if (mouseY==290){
-        c_3.play();
+        c_3.play(); sendsound("c3");
     }
     if (mouseY==310){
-        c_4.play();
+        c_4.play(); sendsound("c4");
     }
     if (mouseY==325){
-        c_5.play();
+        c_5.play(); sendsound("c5");
     }
     if (mouseY==342){
-        c_6.play();
+        c_6.play(); sendsound("c6");
     }
 }
 
@@ -173,22 +201,22 @@ function g_set(){
 
 function g_play(){
     if (mouseY==265){
-        g_1.play();
+        g_1.play(); sendsound("g1");
     }
     if (mouseY==273){
-        g_2.play();
+        g_2.play(); sendsound("g2");
     }
     if (mouseY==290){
-        g_3.play();
+        g_3.play(); sendsound("g3");
     }
     if (mouseY==310){
-        g_4.play();
+        g_4.play(); sendsound("g4");
     }
     if (mouseY==325){
-        g_5.play();
+        g_5.play(); sendsound("g5");
     }
     if (mouseY==342){
-        g_6.play();
+        g_6.play(); sendsound("g6");
     }
 }
 
@@ -200,21 +228,30 @@ function f_set(){
 
 function f_play(){
     if (mouseY==265){
-        f_1.play();
+        f_1.play(); sendsound("f1");
     }
     if (mouseY==273){
-        f_2.play();
+        f_2.play(); sendsound("f2");
     }
     if (mouseY==290){
-        f_3.play();
+        f_3.play(); sendsound("f3");
     }
     if (mouseY==310){
-        f_4.play();
+        f_4.play(); sendsound("f4");
     }
     if (mouseY==325){
-        f_5.play();
+        f_5.play(); sendsound("f5");
     }
     if (mouseY==342){
-        f_6.play();
+        f_6.play(); sendsound("f6");
     }
+}
+
+
+function sendsound(sound) {
+    // We are sending!
+    console.log("sendsound: " + sound);
+
+    // Send that object to the socket
+    socket.emit('guitar',sound);
 }

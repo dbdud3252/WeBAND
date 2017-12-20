@@ -11,20 +11,29 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#home").click(function () {
+                $("#homepage").show();
+                $("#guitar").hide();
+                $("#keyboard").hide();
+                $("#drum").hide();
+            });
             $("#one").click(function () {
                 $("#keyboard").show();
                 $("#drum").hide();
                 $("#guitar").hide();
+                $("#homepage").hide();
             });
             $("#two").click(function () {
                 $("#drum").show();
                 $("#keyboard").hide();
                 $("#guitar").hide();
+                $("#homepage").hide();
             });
             $("#three").click(function () {
                 $("#guitar").show();
                 $("#keyboard").hide();
                 $("#drum").hide();
+                $("#homepage").hide();
             });
         });
     </script>
@@ -37,7 +46,7 @@
                 <div class="row">
                     <div class="col">
                         <nav class="navbar navbar-dark bg-dark">
-                                <button type="button" class="btn btn-dark">WeBAND</button>
+                                <button type="button" id="home" class="btn btn-dark">WeBAND</button>
                                 <div>
                                 <button type="button" id= "one" class="btn btn-outline-primary">Keyboard</button>
                                 <button type="button" id= "two" class="btn btn-outline-secondary">Drum</button>
@@ -56,15 +65,22 @@
                 </div>
         
                 <div class="row">
-                            <div id="keyboard">
-                                    <iframe src="piano.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw; margin-top: 200px; margin-left:13vw;"></iframe>
-                                </div>
-                                <div id="drum">
+                            <div id="homepage">
+                                <iframe src="homepage.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw; margin-left:5vw;"></iframe>
+                            </div>
+                             <div id="keyboard">
+                                <iframe src="piano.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw; margin-top: 200px; margin-left:13vw;"></iframe>
+                            </div>
+                                
+                            <div id="drum">
                                     <iframe src="drum.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw; margin-left:5vw;"></iframe>
-                                </div>
-                                <div id="guitar">
+                            </div>
+                            <div id="guitar">
                                     <iframe src="guitar.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw; margin-left:5vw;"></iframe>
-                                </div>
+                            </div>
+                            
+                                 
+                                
                 </div>
             </div>
     
