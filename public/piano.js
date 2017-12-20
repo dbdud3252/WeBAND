@@ -34,7 +34,8 @@ var synth = new Tone.Synth({
 }).toMaster();
 
 function setup(){
-    createCanvas(800,240);
+    createCanvas(805,246);
+    background(0);
     socket = io.connect('http://localhost:3000');
     socket.on('sound',
     // When we receive data

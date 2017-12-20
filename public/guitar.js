@@ -34,6 +34,31 @@ function setup(){
     socket = io.connect('http://localhost:3000');
     background(0);
     frameRate(500);
+    socket.on('guitar',
+    // When we receive data
+    function(sound) {
+      console.log("Got: " + sound);
+      if(sound=="c1"){c_1.play();}
+      else if(sound=="c2"){c_2.play();}
+      else if(sound=="c3"){c_3.play();}
+      else if(sound=="c4"){c_4.play();}
+      else if(sound=="c5"){c_5.play();}
+      else if(sound=="c6"){c_6.play();}
+      else if(sound=="f1"){f_1.play();}
+      else if(sound=="f2"){f_2.play();}
+      else if(sound=="f3"){f_3.play();}
+      else if(sound=="f4"){f_4.play();}
+      else if(sound=="f5"){f_5.play();}
+      else if(sound=="f6"){f_6.play();}
+      else if(sound=="g1"){g_1.play();}
+      else if(sound=="g2"){g_2.play();}
+      else if(sound=="g3"){g_3.play();}
+      else if(sound=="g4"){g_4.play();}
+      else if(sound=="g5"){g_5.play();}
+      else if(sound=="g6"){g_6.play();}
+
+    }
+  );
 }
 
 

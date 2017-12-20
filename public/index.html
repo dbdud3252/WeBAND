@@ -4,6 +4,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style/examples.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -24,30 +28,47 @@
             });
         });
     </script>
-
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-    </style>
 </head>
+    
+
 
 <body>
-    <button id="one">keyboard</button>
-    <button id="two">drum</button>
-    <button id="three">guitar</button>
-    <div id="keyboard">
-        <iframe src="piano.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw;"></iframe>
-    </div>
-    <div id="drum">
-        <iframe src="drum.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw;"></iframe>
-    </div>
-    <div id="guitar">
-        <iframe src="guitar.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw;"></iframe>
-    </div>
+        <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <nav class="navbar navbar-dark bg-dark">
+                                <button type="button" class="btn btn-dark">WeBAND</button>
+                                <div>
+                                <button type="button" id= "one" class="btn btn-outline-primary">Keyboard</button>
+                                <button type="button" id= "two" class="btn btn-outline-secondary">Drum</button>
+                                <button type="button" id= "three" class="btn btn-outline-success">Guitar</button>
+                                </div>
+                        </nav>
+                        
+                    </div>
+
+        
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-5">
+                       
+                    </div>
+                </div>
+        
+                <div class="row">
+                            <div id="keyboard">
+                                    <iframe src="piano.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw; margin-top: 200px; margin-left:13vw;"></iframe>
+                                </div>
+                                <div id="drum">
+                                    <iframe src="drum.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw; margin-left:5vw;"></iframe>
+                                </div>
+                                <div id="guitar">
+                                    <iframe src="guitar.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw; margin-left:5vw;"></iframe>
+                                </div>
+                </div>
+            </div>
+    
+   
 </body>
 
 </html>
