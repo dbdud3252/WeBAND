@@ -7,6 +7,20 @@ var keys_down = new Array(tone_data.length)
 var sharp_keys_down = new Array(sharp_data.length)
 var i=0;
 
+var s_closehh, s_openhh, s_crash, s_kick, s_ride, s_snare, s_tom1, s_tom2, s_tom3;
+function preload() {
+  soundFormats('ogg', 'wav');
+  s_closehh = loadSound("drum/closehh.wav");
+  s_openhh = loadSound("drum/openhh.wav");
+  s_crash = loadSound("drum/crash.wav");
+  s_kick = loadSound("drum/kick.wav");
+  s_ride = loadSound("drum/ride.wav");
+  s_snare = loadSound("drum/snare.wav");
+  s_tom1 = loadSound("drum/tom1.wav");
+  s_tom2 = loadSound("drum/tom2.wav");
+  s_tom3 = loadSound("drum/tom3.wav");
+}
+
 var synth = new Tone.Synth({
     "oscillator" : {
         "type" : "square"
@@ -32,6 +46,22 @@ function setup(){
       console.log("Got: " + note );
       synth.triggerAttack(note);
       }
+    }
+  );
+
+    socket.on('drum',
+    // When we receive data
+    function(key) {
+      console.log("Got: " + key);
+      if(key=="S"){s_closehh.play();}
+      else if(key=="A"){s_openhh.play();}
+      else if(key=="W"){s_crash.play();}
+      else if(key=="J"){s_kick.play();}
+      else if(key=="I"){s_ride.play();}
+      else if(key=="D"){s_snare.play();}
+      else if(key=="F"){s_tom1.play();}
+      else if(key=="G"){s_tom2.play();}
+      else if(key=="H"){s_tom3.play();}
     }
   );
 }
@@ -166,17 +196,3 @@ function Keys(state){
     // Send that object to the socket
     socket.emit('sound',note);
   }
-
-  /*
-function sendsound(note) {
-    // We are sending!
-    console.log("sendsound: " + note);
-
-    var data = {
-        x: note
-      };
-
-      // Send that object to the socket
-      socket.emit('sound',data);
-  }
-*/
