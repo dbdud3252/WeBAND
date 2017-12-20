@@ -10,10 +10,17 @@
             $("#one").click(function () {
                 $("#keyboard").show();
                 $("#drum").hide();
+                $("#guitar").hide();
             });
             $("#two").click(function () {
                 $("#drum").show();
                 $("#keyboard").hide();
+                $("#guitar").hide();
+            });
+            $("#three").click(function () {
+                $("#guitar").show();
+                $("#keyboard").hide();
+                $("#drum").hide();
             });
         });
     </script>
@@ -29,13 +36,17 @@
 </head>
 
 <body>
-    <button id="one">one</button>
-    <button id="two">two</button>
+    <button id="one">keyboard</button>
+    <button id="two">drum</button>
+    <button id="three">guitar</button>
     <div id="keyboard">
         <iframe src="piano.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw;"></iframe>
     </div>
     <div id="drum">
         <iframe src="drum.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw;"></iframe>
+    </div>
+    <div id="guitar">
+        <iframe src="guitar.html" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 style="height: 100vh; width: 100vw;"></iframe>
     </div>
 </body>
 
