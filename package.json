@@ -26,7 +26,7 @@
   "homepage": "https://github.com/dbdud3252/WeBAND#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "socket.io": "^2.0.4",
     "tone": "^0.11.11"
   }
